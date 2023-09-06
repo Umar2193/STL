@@ -1,0 +1,131 @@
+{
+  "customerMaterial": {
+    "Please Choose": "",
+    "Mains TEQ": "Mains TEQ",
+    "Blade TEQ": "Blade TEQ",
+    "Tower TEQ": "Tower TEQ",
+    "LEQ": "LEQ",
+    "Others": "Others"
+  },
+  "bladeSources": [
+    {
+      "name": "Lingang",
+      "eqmProvider": "APAC",
+      "region": "APAC"
+    },
+    {
+      "name": "LM Qinhuangdao",
+      "eqmProvider": "APAC",
+      "region": "APAC"
+    },
+    {
+      "name": "LM Vadodara",
+      "eqmProvider": "IND",
+      "region": "IND"
+    },
+    {
+      "name": "LM Qinhuangdao",
+      "eqmProvider": "APAC",
+      "region": "APAC"
+    },
+    {
+      "name": "LM Poland",
+      "eqmProvider": "NE&ME",
+      "region": "NE&ME"
+    },
+    {
+      "name": "Aeolon Shanghai",
+      "eqmProvider": "APAC",
+      "region": "APAC"
+    },
+    {
+      "name": "Tangier",
+      "eqmProvider": "SE&A",
+      "region": "SE&A"
+    },
+    {
+      "name": "Vagos",
+      "eqmProvider": "SE&A",
+      "region": "SE&A"
+    },
+    {
+      "name": "Nellore",
+      "eqmProvider": "IND",
+      "region": "IND"
+    }
+  ],
+  "towerSources": [
+    {
+      "name": "Denmark",
+      "eqmProvider": "NE&ME",
+      "region": "NE&ME"
+    },
+    {
+      "name": "Poland",
+      "eqmProvider": "NE&ME",
+      "region": "NE&ME"
+    },
+    {
+      "name": "UK",
+      "eqmProvider": "NE&ME",
+      "region": "NE&ME"
+    },
+    {
+      "name": "Germany",
+      "eqmProvider": "NE&ME",
+      "region": "NE&ME"
+    },
+    {
+      "name": "Turkey",
+      "eqmProvider": "NE&ME",
+      "region": "NE&ME"
+    },
+    {
+      "name": "Portugal",
+      "eqmProvider": "SE&A",
+      "region": "SE&A"
+    },
+    {
+      "name": "Spain",
+      "eqmProvider": "SE&A",
+      "region": "SE&A"
+    },
+    {
+      "name": "CS Wind CH & VN",
+      "eqmProvider": "APAC",
+      "region": "APAC"
+    },
+    {
+      "name": "TITAN",
+      "eqmProvider": "APAC",
+      "region": "APAC"
+    },
+    {
+      "name": "Dajin",
+      "eqmProvider": "APAC",
+      "region": "APAC"
+    }
+  ],
+  "mainSources": [
+    {
+      "name": "Tianjin",
+      "eqmProvider": "APAC",
+      "region": "APAC"
+    },
+    {
+      "name": "AVIM",
+      "eqmProvider": "APAC",
+      "region": "APAC"
+    },
+    {
+      "name": "Agreda",
+      "eqmProvider": "SE&A",
+      "region": "SE&A"
+    },
+    {
+      "name": "Spain",
+      "eqmProvider": "SE&A",
+      "region": "SE&A"
+    }
+  ]
+}
