@@ -127,5 +127,23 @@
       "eqmProvider": "SE&A",
       "region": "SE&A"
     }
+  ],
+  "warningMessages": [
+    {
+      "MaterialNo": "GD392506",
+      "Message": "This is warning Message for GD392506"
+    },
+    {
+      "MaterialNo": "GP223052",
+      "Message": "This is warning Message for GP223052"
+    },
+    {
+      "MaterialNo": "GP285977",
+      "Message": "This is warning Message for GP285977"
+    },
+    {
+      "MaterialNo": "GP222509",
+      "Message": "This is warning Message for GP222509"
+    }
   ]
 }

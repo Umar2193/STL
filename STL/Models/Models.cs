@@ -33,4 +33,11 @@
         public string EQMProvider { get; set; }
         public string Region { get; set; }
     }
+    public class WarningMessageSource
+    {
+        public string MaterialNo { get; set; } 
+        public string Message { get; set; }
+            
+          
+    }
 }

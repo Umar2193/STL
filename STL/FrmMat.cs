@@ -1,9 +1,11 @@
 ﻿using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Bibliography;
 using Newtonsoft.Json;
 using STL.Helpers;
 using STL.Models;
 using System.Data;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace STL {
     public partial class FrmMat : Form {
@@ -123,7 +125,7 @@ namespace STL {
                             Incoterm = projWorkSheet.Cell(i, 10).Value?.ToString(),
                             IncotermLocation = projWorkSheet.Cell(i, 11).Value?.ToString(),
                         });
-                    }
+                    }   
                 }
 
                 bladeSources.AddRange(new List<string>() { projWorkSheet.Cell(17, 4)?.Value?.ToString(), projWorkSheet.Cell(21, 4)?.Value?.ToString() });
@@ -175,7 +177,15 @@ namespace STL {
         }
 
         private void PaintPlanningGrid(DataTable dt) {
-            for(int i = 0; i < dt.Rows.Count; i++) {
+            var totalOrderin = "";
+            var totalOrderout = "";
+            if (dt.Rows.Count > 0)
+            {
+                dgvPlanning.Columns[0].Frozen = true;
+                dgvPlanning.Columns[1].Frozen = true;
+               
+            }
+            for (int i = 0; i < dt.Rows.Count; i++) {
                 int rowToSelect = i - (i % 7);
 
                 if(i % 7 == 0) {
@@ -188,7 +198,25 @@ namespace STL {
                 } else if((i + 1) % 7 == 6 || (i + 1) % 7 == 0) {
                     DisableRow(i, false);
                 } else {
-                    dgvPlanning.Rows[i].Cells[0].Style.BackColor = Color.LightGray;
+                    if (dgvPlanning.Rows[i].Cells[0].Value.ToString() == "Order In(ex warehouse)")
+                    {
+                        totalOrderin = dgvPlanning.Rows[i].Cells[1].Value.ToString();
+                        totalOrderout = dgvPlanning.Rows[i + 1].Cells[1].Value.ToString();
+                    }
+                    else if(dgvPlanning.Rows[i].Cells[0].Value.ToString() == "Order Out")
+                    {
+                        totalOrderin = dgvPlanning.Rows[i].Cells[1].Value.ToString();
+                        totalOrderout = dgvPlanning.Rows[i - 1].Cells[1].Value.ToString();
+                    }
+                    if (totalOrderin !=totalOrderout )
+                    {
+                        dgvPlanning.Rows[i].Cells[0].Style.BackColor = Color.Red;
+                    }
+                    else
+                    {
+                        dgvPlanning.Rows[i].Cells[0].Style.BackColor = Color.Green;
+                    }
+                   
                     dgvPlanning.Rows[i].Cells[0].ReadOnly = true;
                     dgvPlanning.Rows[i].Cells[1].Style.BackColor = Color.LightGray;
                     dgvPlanning.Rows[i].Cells[1].ReadOnly = true;
@@ -473,7 +501,14 @@ namespace STL {
                         dtSource.Rows.Add(rowData.ToArray());
                         dtSource.Rows[dtSource.Rows.Count - 1]["Color"] = row.Cell(1).Style.Fill.BackgroundColor.ColorType == XLColorType.Theme ? "FFFFFF" : row.Cell(1).Style.Fill.BackgroundColor?.Color.Name;
                         types.Add(row.Cell(baseIndex).Value?.ToString());
-                        componentlist.Add(row.Cell(baseIndex + 1).Value?.ToString());
+                        if (row.Cell(baseIndex + 1).Value?.ToString() == "Blades")
+                        {
+                            componentlist.Add("Blade");
+                        }
+                        else
+                        {
+                            componentlist.Add(row.Cell(baseIndex + 1).Value?.ToString());
+                        }
                     }
                 }
             }
@@ -882,6 +917,18 @@ namespace STL {
                         MessageBox.Show($"Please select delivery destination for material - {row.Cells["MatNo"].Value} ", "Error");
                         return;
                     }
+                    try
+                    {
+                        if (row.Cells["Source"] != null)
+                        {
+                            if (string.IsNullOrEmpty(row.Cells["Source"]?.Value?.ToString()))
+                            {
+                                MessageBox.Show($"Please select source for material - {row.Cells["MatNo"].Value} ", "Error");
+                                return;
+                            }
+                        }
+                    }
+                    catch (Exception ex) { }
                     deliveryDestination = row.Cells["DeliveryDestination"]?.Value?.ToString();
 
                     if(i > 0 && packageName.ToLower() != row.Cells["Package"].Value.ToString().ToLower()) {
@@ -906,6 +953,11 @@ namespace STL {
                         EqmOwnership = GetEqmOwnership(rbtLeq.Checked ? string.Empty : row.Cells["Source"]?.Value?.ToString(), packageName),
                         Region = GetComponentSourceRegion(rbtLeq.Checked ? string.Empty : row.Cells["Source"]?.Value?.ToString(), packageName)
                     });
+                   var message=  config.lstWarningMessageSource.Where(c => c.MaterialNo.Contains(row.Cells["MatNo"].Value.ToString().Replace("-L", ""))).FirstOrDefault();
+                    if (message !=null &&  !string.IsNullOrEmpty(message.Message)) 
+                    {
+                        MessageBox.Show(message.Message);
+                    }
                 }
             }
 
@@ -933,7 +985,7 @@ namespace STL {
                             dt.Rows.Add(new object[] { });
                         }
                         dt.Rows.Add(GetItem($"{packageName}({string.Join(", ", materials)})[{packageId}]", CommonHelper.WeekList(StartDate, EndDate), "Total"));
-                        dt.Rows.Add(GetItem("Order In", CommonHelper.WeekList(StartDate, EndDate).Select(c => $"0").ToList(), "0"));
+                        dt.Rows.Add(GetItem("Order In(ex warehouse)", CommonHelper.WeekList(StartDate, EndDate).Select(c => $"0").ToList(), "0"));
                         dt.Rows.Add(GetItem("Order Out", CommonHelper.WeekList(StartDate, EndDate).Select(c => $"0").ToList(), "0"));
                         dt.Rows.Add(GetItem("Quantity on the project [" + deliveryDestination + "]", CommonHelper.WeekList(StartDate, EndDate).Select(c => $"0").ToList(), "0"));
                         dt.Rows.Add(GetItem($"Rate - {rate}", CommonHelper.WeekList(StartDate, EndDate).Select(c => $"0").ToList(), "0"));
@@ -942,11 +994,13 @@ namespace STL {
 
 
                     dgvPlanning.DataSource = dt;
+                   
                     dgvPlanning.Update();
                     dgvPlanning.Refresh();
 
                     PaintPlanningGrid(dt);
-                    foreach(DataGridViewRow row in dgvSource.Rows) {
+            
+                    foreach (DataGridViewRow row in dgvSource.Rows) {
                         DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[dgvSource.ColumnCount - 1];
                         chk.Value = chk.FalseValue;
                         //row.Cells["OrderQty"].Value = "";
@@ -1146,6 +1200,11 @@ namespace STL {
                 dt.Rows[e.RowIndex + 2][1] = totalRate;
             }
             dgvPlanning.DataSource = dt;
+            if(dt != null)
+            {
+                 PaintPlanningGrid(dt);
+            }
+           
             dgvPlanning.Refresh();
             dgvPlanning.Update();
         }

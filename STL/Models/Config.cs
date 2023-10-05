@@ -8,6 +8,7 @@ namespace STL.Models {
             BladeSources = new List<Source>();
             TowerSources = new List<Source>();
             MainSources = new List<Source>();
+            lstWarningMessageSource = new List<WarningMessageSource>(); 
         }
 
         [JsonProperty("CustomerMaterial")]
@@ -21,5 +22,7 @@ namespace STL.Models {
 
         [JsonProperty("mainSources")]
         public List<Source> MainSources { get; set; }
+        [JsonProperty("warningMessages")]
+        public List<WarningMessageSource> lstWarningMessageSource { get; set; }
     }
 }

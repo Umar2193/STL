@@ -143,8 +143,47 @@ namespace STL {
                     ShowError("Start date should be lesser than end date.");
                     return;
                 }
-
-                if(txtName.Text != lblProjName.Text && helper.CheckIfFolderExists(txtName.Text)) {
+                if (!(string.IsNullOrEmpty(txtEp1.Text)) && !(txtEp1.Text.Contains("-")))
+                {
+                    ShowError("Execution Plant value should have seprator - in value.");
+                    return;
+                }
+                if (!(string.IsNullOrEmpty(txtEp2.Text)) && !(txtEp2.Text.Contains("-")))
+                {
+                    ShowError("Execution Plant value should have seprator - in value.");
+                    return;
+                }
+                if (!(string.IsNullOrEmpty(txtEp3.Text)) && !(txtEp3.Text.Contains("-")))
+                {
+                    ShowError("Execution Plant value should have seprator - in value.");
+                    return;
+                }
+                if (!(string.IsNullOrEmpty(txtEp4.Text)) && !(txtEp4.Text.Contains("-")))
+                {
+                    ShowError("Execution Plant value should have seprator - in value.");
+                    return;
+                }
+                if (!(string.IsNullOrEmpty(txtEp5.Text)) && !(txtEp5.Text.Contains("-")))
+                {
+                    ShowError("Execution Plant value should have seprator - in value.");
+                    return;
+                }
+                if (!(string.IsNullOrEmpty(txtEp6.Text)) && !(txtEp6.Text.Contains("-")))
+                {
+                    ShowError("Execution Plant value should have seprator - in value.");
+                    return;
+                }
+                if (!(string.IsNullOrEmpty(txtEp7.Text)) && !(txtEp7.Text.Contains("-")))
+                {
+                    ShowError("Execution Plant value should have seprator - in value.");
+                    return;
+                }
+                if (!(string.IsNullOrEmpty(txtEp8.Text)) && !(txtEp8.Text.Contains("-")))
+                {
+                    ShowError("Execution Plant value should have seprator - in value.");
+                    return;
+                }
+                if (txtName.Text != lblProjName.Text && helper.CheckIfFolderExists(txtName.Text)) {
                     ShowError("Project already exists.");
                     return;
                 }
@@ -184,91 +223,91 @@ namespace STL {
                         worksheet.Cell(6, 8).Value = txt3Contact.Text;
                         worksheet.Cell(6, 9).Value = txt3Gid.Text;
                         worksheet.Cell(6, 7).Value = txt3Name.Text;
-                        worksheet.Cell(7, 8).Value = txt4Contact.Text;
-                        worksheet.Cell(7, 9).Value = txt4Gid.Text;
-                        worksheet.Cell(7, 7).Value = txt4Name.Text;
-                        worksheet.Cell(8, 8).Value = txt5Contact.Text;
-                        worksheet.Cell(8, 9).Value = txt5Gid.Text;
-                        worksheet.Cell(8, 7).Value = txt5Name.Text;
-                        worksheet.Cell(9, 8).Value = txt6Contact.Text;
-                        worksheet.Cell(9, 9).Value = txt6Gid.Text;
-                        worksheet.Cell(9, 7).Value = txt6Name.Text;
-                        worksheet.Cell(10, 8).Value = txt7Contact.Text;
-                        worksheet.Cell(10, 9).Value = txt7Gid.Text;
-                        worksheet.Cell(10, 7).Value = txt7Name.Text;
-                        worksheet.Cell(11, 8).Value = txt8Contact.Text;
-                        worksheet.Cell(11, 9).Value = txt8Gid.Text;
-                        worksheet.Cell(11, 7).Value = txt8Name.Text;
-                        worksheet.Cell(12, 7).Value = txt9Name.Text;
-                        worksheet.Cell(12, 8).Value = txt9Contact.Text;
-                        worksheet.Cell(12, 9).Value = txt9Gid.Text;
+                        //worksheet.Cell(7, 8).Value = txt4Contact.Text;
+                        //worksheet.Cell(7, 9).Value = txt4Gid.Text;
+                        //worksheet.Cell(7, 7).Value = txt4Name.Text;
+                        worksheet.Cell(7, 8).Value = txt5Contact.Text;
+                        worksheet.Cell(7, 9).Value = txt5Gid.Text;
+                        worksheet.Cell(7, 7).Value = txt5Name.Text;
+                        worksheet.Cell(8, 8).Value = txt6Contact.Text;
+                        worksheet.Cell(8, 9).Value = txt6Gid.Text;
+                        worksheet.Cell(8, 7).Value = txt6Name.Text;
+                        worksheet.Cell(9, 8).Value = txt7Contact.Text;
+                        worksheet.Cell(9, 9).Value = txt7Gid.Text;
+                        worksheet.Cell(9, 7).Value = txt7Name.Text;
+                        worksheet.Cell(10, 8).Value = txt8Contact.Text;
+                        worksheet.Cell(10, 9).Value = txt8Gid.Text;
+                        worksheet.Cell(10, 7).Value = txt8Name.Text;
+                        worksheet.Cell(11, 7).Value = txt9Name.Text;
+                        worksheet.Cell(11, 8).Value = txt9Contact.Text;
+                        worksheet.Cell(11, 9).Value = txt9Gid.Text;
 
                         worksheet.Cell(17, 3).Value = txtBladeType1.Text;
-                        worksheet.Cell(21, 3).Value = txtBladeType2.Text;
+                        worksheet.Cell(22, 3).Value = txtBladeType2.Text;
                         worksheet.Cell(8, 3).Value = txtCity.Text;
                         worksheet.Cell(9, 3).Value = txtCountry.Text;
                         worksheet.Cell(10, 3).Value = txtCustomer.Text;
                         worksheet.Cell(4, 3).Value = txtEndDate.Value;
                         worksheet.Cell(7, 3).Value = txtPostalCode.Text;
 
-                        worksheet.Cell(16, 6).Value = txtstrlc1.Text;
-                        worksheet.Cell(16, 7).Value = txtEp1.Text;
+                        worksheet.Cell(16, 7).Value = txtstrlc1.Text;
+                        worksheet.Cell(16, 6).Value = txtEp1.Text;
                         worksheet.Cell(16, 8).Value = txtWBS1.Text;
                         worksheet.Cell(16, 9).Value = txtFOPO1.Text;
                         worksheet.Cell(16, 10).Value = txtincoterm1.Text;
                         worksheet.Cell(16, 11).Value = txtincotermlc1.Text;
                         worksheet.Cell(16, 12).Value = txtcontactperson1.Text;
 
-                        worksheet.Cell(17, 6).Value = txtstrlc2.Text;
-                        worksheet.Cell(17, 7).Value = txtEp2.Text;
+                        worksheet.Cell(17, 7).Value = txtstrlc2.Text;
+                        worksheet.Cell(17, 6).Value = txtEp2.Text;
                         worksheet.Cell(17, 8).Value = txtWBS2.Text;
                         worksheet.Cell(17, 9).Value = txtFOPO2.Text;
                         worksheet.Cell(17, 10).Value = txtincoterm2.Text;
                         worksheet.Cell(17, 11).Value = txtincotermlc2.Text;
                         worksheet.Cell(17, 12).Value = txtcontactperson2.Text;
 
-                        worksheet.Cell(18, 6).Value = txtstrlc3.Text;
-                        worksheet.Cell(18, 7).Value = txtEp3.Text;
+                        worksheet.Cell(18, 7).Value = txtstrlc3.Text;
+                        worksheet.Cell(18, 6).Value = txtEp3.Text;
                         worksheet.Cell(18, 8).Value = txtWBS3.Text;
                         worksheet.Cell(18, 9).Value = txtFOPO3.Text;
                         worksheet.Cell(18, 10).Value = txtincoterm3.Text;
                         worksheet.Cell(18, 11).Value = txtincotermlc3.Text;
                         worksheet.Cell(18, 12).Value = txtcontactperson3.Text;
 
-                        worksheet.Cell(19, 6).Value = txtstrlc4.Text;
-                        worksheet.Cell(19, 7).Value = txtEp4.Text;
+                        worksheet.Cell(19, 7).Value = txtstrlc4.Text;
+                        worksheet.Cell(19, 6).Value = txtEp4.Text;
                         worksheet.Cell(19, 8).Value = txtWBS4.Text;
                         worksheet.Cell(19, 9).Value = txtFOPO4.Text;
                         worksheet.Cell(19, 10).Value = txtincoterm4.Text;
                         worksheet.Cell(19, 11).Value = txtincotermlc4.Text;
                         worksheet.Cell(19, 12).Value = txtcontactperson4.Text;
 
-                        worksheet.Cell(20, 6).Value = txtstrlc5.Text;
-                        worksheet.Cell(20, 7).Value = txtEp5.Text;
+                        worksheet.Cell(20, 7).Value = txtstrlc5.Text;
+                        worksheet.Cell(20, 6).Value = txtEp5.Text;
                         worksheet.Cell(20, 8).Value = txtWBS5.Text;
                         worksheet.Cell(20, 9).Value = txtFOPO5.Text;
                         worksheet.Cell(20, 10).Value = txtincoterm5.Text;
                         worksheet.Cell(20, 11).Value = txtincotermlc5.Text;
                         worksheet.Cell(20, 12).Value = txtcontactperson5.Text;
 
-                        worksheet.Cell(21, 6).Value = txtstrlc6.Text;
-                        worksheet.Cell(21, 7).Value = txtEp6.Text;
+                        worksheet.Cell(21, 7).Value = txtstrlc6.Text;
+                        worksheet.Cell(21, 6).Value = txtEp6.Text;
                         worksheet.Cell(21, 8).Value = txtWBS6.Text;
                         worksheet.Cell(21, 9).Value = txtFOPO6.Text;
                         worksheet.Cell(21, 10).Value = txtincoterm6.Text;
                         worksheet.Cell(21, 11).Value = txtincotermlc6.Text;
                         worksheet.Cell(21, 12).Value = txtcontactperson6.Text;
 
-                        worksheet.Cell(22, 6).Value = txtstrlc7.Text;
-                        worksheet.Cell(22, 7).Value = txtEp7.Text;
+                        worksheet.Cell(22, 7).Value = txtstrlc7.Text;
+                        worksheet.Cell(22, 6).Value = txtEp7.Text;
                         worksheet.Cell(22, 8).Value = txtWBS7.Text;
                         worksheet.Cell(22, 9).Value = txtFOPO7.Text;
                         worksheet.Cell(22, 10).Value = txtincoterm7.Text;
                         worksheet.Cell(22, 11).Value = txtincotermlc7.Text;
                         worksheet.Cell(22, 12).Value = txtcontactperson7.Text;
 
-                        worksheet.Cell(23, 6).Value = txtstrlc8.Text;
-                        worksheet.Cell(23, 7).Value = txtEp8.Text;
+                        worksheet.Cell(23, 7).Value = txtstrlc8.Text;
+                        worksheet.Cell(23, 6).Value = txtEp8.Text;
                         worksheet.Cell(23, 8).Value = txtWBS8.Text;
                         worksheet.Cell(23, 9).Value = txtFOPO8.Text;
                         worksheet.Cell(23, 10).Value = txtincoterm8.Text;
@@ -285,12 +324,14 @@ namespace STL {
                         worksheet.Cell(3, 3).Value = txtStartDate.Value;
                         worksheet.Cell(6, 3).Value = txtStreet.Text;
                         worksheet.Cell(18, 3).Value = txtTowerType1.Text;
-                        worksheet.Cell(22, 3).Value = txtTowerType2.Text;
+                        worksheet.Cell(23, 3).Value = txtTowerType2.Text;
                         worksheet.Cell(11, 3).Value = txtTurbineCount.Text;
-                        worksheet.Cell(19, 3).Value = txtTurbineCount1.Text;
-                        worksheet.Cell(23, 3).Value = txtTurbineCount2.Text;
+                        worksheet.Cell(19, 3).Value = txttwrcode1.Text;
+                        worksheet.Cell(20, 3).Value = txtTurbineCount1.Text;
+                        worksheet.Cell(24, 3).Value = txttwrcode2.Text;
+                        worksheet.Cell(25, 3).Value = txtTurbineCount2.Text;
                         worksheet.Cell(16, 3).Value = txtTurbineType1.Text;
-                        worksheet.Cell(20, 3).Value = txtTurbineType2.Text;
+                        worksheet.Cell(21, 3).Value = txtTurbineType2.Text;
                         worksheet.Cell(5, 3).Value = txtName.Text;
 
                         worksheet.Cell(16, 13).Value = txtMainCWBS.Text;
@@ -353,11 +394,13 @@ namespace STL {
                         txtTurbineType1.Text = worksheet.Cell(16, 3).Value.ToString();
                         txtBladeType1.Text = worksheet.Cell(17, 3).Value.ToString();
                         txtTowerType1.Text = worksheet.Cell(18, 3).Value.ToString();
-                        txtTurbineCount1.Text = worksheet.Cell(19, 3).Value.ToString();
-                        txtTurbineType2.Text = worksheet.Cell(20, 3).Value.ToString();
-                        txtBladeType2.Text = worksheet.Cell(21, 3).Value.ToString();
-                        txtTowerType2.Text = worksheet.Cell(22, 3).Value.ToString();
-                        txtTurbineCount2.Text = worksheet.Cell(23, 3).Value.ToString();
+                        txtTurbineCount1.Text = worksheet.Cell(20, 3).Value.ToString();
+                        txttwrcode1.Text = worksheet.Cell(19, 3).Value.ToString();
+                        txtTurbineType2.Text = worksheet.Cell(21, 3).Value.ToString();
+                        txtBladeType2.Text = worksheet.Cell(22, 3).Value.ToString();
+                        txtTowerType2.Text = worksheet.Cell(23, 3).Value.ToString();
+                        txttwrcode2.Text = worksheet.Cell(24, 3).Value.ToString();
+                        txtTurbineCount2.Text = worksheet.Cell(25, 3).Value.ToString();
 
                         txt1Name.Text = worksheet.Cell(4, 7).Value.ToString();
                         txt1Contact.Text = worksheet.Cell(4, 8).Value.ToString();
@@ -371,25 +414,25 @@ namespace STL {
                         txt3Contact.Text = worksheet.Cell(6, 8).Value.ToString();
                         txt3Gid.Text = worksheet.Cell(6, 9).Value.ToString();
 
-                        txt4Name.Text = worksheet.Cell(7, 7).Value.ToString();
-                        txt4Contact.Text = worksheet.Cell(7, 8).Value.ToString();
-                        txt4Gid.Text = worksheet.Cell(7, 9).Value.ToString();
+                        //txt4Name.Text = worksheet.Cell(7, 7).Value.ToString();
+                        //txt4Contact.Text = worksheet.Cell(7, 8).Value.ToString();
+                        //txt4Gid.Text = worksheet.Cell(7, 9).Value.ToString();
 
-                        txt5Name.Text = worksheet.Cell(8, 7).Value.ToString();
-                        txt5Contact.Text = worksheet.Cell(8, 8).Value.ToString();
-                        txt5Gid.Text = worksheet.Cell(8, 9).Value.ToString();
+                        txt5Name.Text = worksheet.Cell(7, 7).Value.ToString();
+                        txt5Contact.Text = worksheet.Cell(7, 8).Value.ToString();
+                        txt5Gid.Text = worksheet.Cell(7, 9).Value.ToString();
 
-                        txt6Name.Text = worksheet.Cell(9, 7).Value.ToString();
-                        txt6Contact.Text = worksheet.Cell(9, 8).Value.ToString();
-                        txt6Gid.Text = worksheet.Cell(9, 9).Value.ToString();
+                        txt6Name.Text = worksheet.Cell(8, 7).Value.ToString();
+                        txt6Contact.Text = worksheet.Cell(8, 8).Value.ToString();
+                        txt6Gid.Text = worksheet.Cell(8, 9).Value.ToString();
 
-                        txt7Name.Text = worksheet.Cell(10, 7).Value.ToString();
-                        txt7Contact.Text = worksheet.Cell(10, 8).Value.ToString();
-                        txt7Gid.Text = worksheet.Cell(10, 9).Value.ToString();
+                        txt7Name.Text = worksheet.Cell(9, 7).Value.ToString();
+                        txt7Contact.Text = worksheet.Cell(9, 8).Value.ToString();
+                        txt7Gid.Text = worksheet.Cell(9, 9).Value.ToString();
 
-                        txt8Name.Text = worksheet.Cell(11, 7).Value.ToString();
-                        txt8Contact.Text = worksheet.Cell(11, 8).Value.ToString();
-                        txt8Gid.Text = worksheet.Cell(11, 9).Value.ToString();
+                        txt8Name.Text = worksheet.Cell(10, 7).Value.ToString();
+                        txt8Contact.Text = worksheet.Cell(10, 8).Value.ToString();
+                        txt8Gid.Text = worksheet.Cell(10, 9).Value.ToString();
 
                         txtStartDate.Value = DateTime.Parse(worksheet.Cell(3, 3)?.Value?.ToString());
                         txtEndDate.Value = DateTime.Parse(worksheet.Cell(4, 3)?.Value?.ToString());                                     
@@ -417,64 +460,64 @@ namespace STL {
                             cmb2Tower.SelectedIndex = cmb2Tower.FindString(worksheet.Cell(22, 4).Value.ToString());
                         }
 
-                        txtstrlc1.Text = worksheet.Cell(16, 6).Value.ToString();
-                        txtEp1.Text = worksheet.Cell(16, 7).Value.ToString();
+                        txtstrlc1.Text = worksheet.Cell(16, 7).Value.ToString();
+                        txtEp1.Text = worksheet.Cell(16, 6).Value.ToString();
                         txtWBS1.Text = worksheet.Cell(16, 8).Value.ToString();
                         txtFOPO1.Text = worksheet.Cell(16, 9).Value.ToString();
                         txtincoterm1.Text = worksheet.Cell(16, 10).Value.ToString();
                         txtincotermlc1.Text = worksheet.Cell(16, 11).Value.ToString();
                         txtcontactperson1.Text = worksheet.Cell(16, 12).Value.ToString();
 
-                        txtstrlc2.Text = worksheet.Cell(17, 6).Value.ToString();
-                        txtEp2.Text = worksheet.Cell(17, 7).Value.ToString();
+                        txtstrlc2.Text = worksheet.Cell(17, 7).Value.ToString();
+                        txtEp2.Text = worksheet.Cell(17, 6).Value.ToString();
                         txtWBS2.Text = worksheet.Cell(17, 8).Value.ToString();
                         txtFOPO2.Text = worksheet.Cell(17, 9).Value.ToString();
                         txtincoterm2.Text = worksheet.Cell(17, 10).Value.ToString();
                         txtincotermlc2.Text = worksheet.Cell(17, 11).Value.ToString();
                         txtcontactperson2.Text = worksheet.Cell(17, 12).Value.ToString();
 
-                        txtstrlc3.Text = worksheet.Cell(18, 6).Value.ToString();
-                        txtEp3.Text = worksheet.Cell(18, 7).Value.ToString();
+                        txtstrlc3.Text = worksheet.Cell(18, 7).Value.ToString();
+                        txtEp3.Text = worksheet.Cell(18, 6).Value.ToString();
                         txtWBS3.Text = worksheet.Cell(18, 8).Value.ToString();
                         txtFOPO3.Text = worksheet.Cell(18, 9).Value.ToString();
                         txtincoterm3.Text = worksheet.Cell(18, 10).Value.ToString();
                         txtincotermlc3.Text = worksheet.Cell(18, 11).Value.ToString();
                         txtcontactperson3.Text = worksheet.Cell(18, 12).Value.ToString();
 
-                        txtstrlc4.Text = worksheet.Cell(19, 6).Value.ToString();
-                        txtEp4.Text = worksheet.Cell(19, 7).Value.ToString();
+                        txtstrlc4.Text = worksheet.Cell(19, 7).Value.ToString();
+                        txtEp4.Text = worksheet.Cell(19, 6).Value.ToString();
                         txtWBS4.Text = worksheet.Cell(19, 8).Value.ToString();
                         txtFOPO4.Text = worksheet.Cell(19, 9).Value.ToString();
                         txtincoterm4.Text = worksheet.Cell(19, 10).Value.ToString();
                         txtincotermlc4.Text = worksheet.Cell(19, 11).Value.ToString();
                         txtcontactperson4.Text = worksheet.Cell(19, 12).Value.ToString();
                      
-                        txtstrlc5.Text = worksheet.Cell(20, 6).Value.ToString();
-                        txtEp5.Text = worksheet.Cell(20, 7).Value.ToString();
+                        txtstrlc5.Text = worksheet.Cell(20, 7).Value.ToString();
+                        txtEp5.Text = worksheet.Cell(20, 6).Value.ToString();
                         txtWBS5.Text = worksheet.Cell(20, 8).Value.ToString();
                         txtFOPO5.Text = worksheet.Cell(20, 9).Value.ToString();
                         txtincoterm5.Text = worksheet.Cell(20, 10).Value.ToString();
                         txtincotermlc5.Text = worksheet.Cell(20, 11).Value.ToString();
                         txtcontactperson5.Text = worksheet.Cell(20, 12).Value.ToString();
                        
-                        txtstrlc6.Text = worksheet.Cell(21, 6).Value.ToString();
-                        txtEp6.Text = worksheet.Cell(21, 7).Value.ToString();
+                        txtstrlc6.Text = worksheet.Cell(21, 7).Value.ToString();
+                        txtEp6.Text = worksheet.Cell(21, 6).Value.ToString();
                         txtWBS6.Text = worksheet.Cell(21, 8).Value.ToString();
                         txtFOPO6.Text = worksheet.Cell(21, 9).Value.ToString();
                         txtincoterm6.Text = worksheet.Cell(21, 10).Value.ToString();
                         txtincotermlc6.Text = worksheet.Cell(21, 11).Value.ToString();
                         txtcontactperson6.Text = worksheet.Cell(21, 12).Value.ToString();
                        
-                        txtstrlc7.Text = worksheet.Cell(22, 6).Value.ToString();
-                        txtEp7.Text = worksheet.Cell(22, 7).Value.ToString();
+                        txtstrlc7.Text = worksheet.Cell(22, 7).Value.ToString();
+                        txtEp7.Text = worksheet.Cell(22, 6).Value.ToString();
                         txtWBS7.Text = worksheet.Cell(22, 8).Value.ToString();
                         txtFOPO7.Text = worksheet.Cell(22, 9).Value.ToString();
                         txtincoterm7.Text = worksheet.Cell(22, 10).Value.ToString();
                         txtincotermlc7.Text = worksheet.Cell(22, 11).Value.ToString();
                         txtcontactperson7.Text = worksheet.Cell(22, 12).Value.ToString();
 
-                        txtstrlc8.Text = worksheet.Cell(23, 6).Value.ToString();
-                        txtEp8.Text = worksheet.Cell(23, 7).Value.ToString();
+                        txtstrlc8.Text = worksheet.Cell(23, 7).Value.ToString();
+                        txtEp8.Text = worksheet.Cell(23, 6).Value.ToString();
                         txtWBS8.Text = worksheet.Cell(23, 8).Value.ToString();
                         txtFOPO8.Text = worksheet.Cell(23, 9).Value.ToString();
                         txtincoterm8.Text = worksheet.Cell(23, 10).Value.ToString();
