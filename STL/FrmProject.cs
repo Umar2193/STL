@@ -143,44 +143,44 @@ namespace STL {
                     ShowError("Start date should be lesser than end date.");
                     return;
                 }
-                if (!(string.IsNullOrEmpty(txtEp1.Text)) && !(txtEp1.Text.Contains("-")))
+                if (!(string.IsNullOrEmpty(txtstrlc1.Text)) && !(txtstrlc1.Text.Contains("-")))
+                {
+                    ShowError("Storage Location value should have seprator - in value.");
+                    return;
+                }
+                if (!(string.IsNullOrEmpty(txtstrlc2.Text)) && !(txtstrlc2.Text.Contains("-")))
                 {
                     ShowError("Execution Plant value should have seprator - in value.");
                     return;
                 }
-                if (!(string.IsNullOrEmpty(txtEp2.Text)) && !(txtEp2.Text.Contains("-")))
+                if (!(string.IsNullOrEmpty(txtstrlc3.Text)) && !(txtstrlc3.Text.Contains("-")))
                 {
-                    ShowError("Execution Plant value should have seprator - in value.");
+                    ShowError("Storage Location value should have seprator - in value.");
                     return;
                 }
-                if (!(string.IsNullOrEmpty(txtEp3.Text)) && !(txtEp3.Text.Contains("-")))
+                if (!(string.IsNullOrEmpty(txtstrlc4.Text)) && !(txtstrlc4.Text.Contains("-")))
                 {
-                    ShowError("Execution Plant value should have seprator - in value.");
+                    ShowError("Storage Location value should have seprator - in value.");
                     return;
                 }
-                if (!(string.IsNullOrEmpty(txtEp4.Text)) && !(txtEp4.Text.Contains("-")))
+                if (!(string.IsNullOrEmpty(txtstrlc5.Text)) && !(txtstrlc5.Text.Contains("-")))
                 {
-                    ShowError("Execution Plant value should have seprator - in value.");
+                    ShowError("Storage Location value should have seprator - in value.");
                     return;
                 }
-                if (!(string.IsNullOrEmpty(txtEp5.Text)) && !(txtEp5.Text.Contains("-")))
+                if (!(string.IsNullOrEmpty(txtstrlc6.Text)) && !(txtstrlc6.Text.Contains("-")))
                 {
-                    ShowError("Execution Plant value should have seprator - in value.");
+                    ShowError("Storage Location value should have seprator - in value.");
                     return;
                 }
-                if (!(string.IsNullOrEmpty(txtEp6.Text)) && !(txtEp6.Text.Contains("-")))
+                if (!(string.IsNullOrEmpty(txtstrlc7.Text)) && !(txtstrlc7.Text.Contains("-")))
                 {
-                    ShowError("Execution Plant value should have seprator - in value.");
+                    ShowError("Storage Location value should have seprator - in value.");
                     return;
                 }
-                if (!(string.IsNullOrEmpty(txtEp7.Text)) && !(txtEp7.Text.Contains("-")))
+                if (!(string.IsNullOrEmpty(txtstrlc8.Text)) && !(txtstrlc8.Text.Contains("-")))
                 {
-                    ShowError("Execution Plant value should have seprator - in value.");
-                    return;
-                }
-                if (!(string.IsNullOrEmpty(txtEp8.Text)) && !(txtEp8.Text.Contains("-")))
-                {
-                    ShowError("Execution Plant value should have seprator - in value.");
+                    ShowError("Storage Location value should have seprator - in value.");
                     return;
                 }
                 if (txtName.Text != lblProjName.Text && helper.CheckIfFolderExists(txtName.Text)) {

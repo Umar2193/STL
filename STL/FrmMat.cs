@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace STL {
     public partial class FrmMat : Form {
-        private readonly List<string> sourceColumns = new List<string>() { "MatNo", "Object description", "quantity", "Package", "Comment", "2X SG2.1-114", "2X SG2.5-114", "2X SG-126", "3X SG-132", "4X SG-132", "4X SG-145", "5X SG-155", "5X SG-170", "Type", "Component" };
+        private readonly List<string> sourceColumns = new List<string>() { "MatNo", "Object description", "quantity", "Package", "Comment", "2X SG2.1-114", "2X SG2.5-114", "2X SG-126", "3X SG-132", "4X SG-132", "4X SG-145", "5X SG-155", "5X SG-170", "Type", "Component", "Material handling type" };
         private readonly List<string> sourceDisplayColumns = new List<string>() { "MatNo", "Object description", "quantity", "Package" };
         private readonly string[] editableSourceColumns = new string[] { "DeliveryDestination", };
         private readonly List<string> rentalColumns = new List<string>() { "MatNo", "QTY", "MatDescription", "RentalCharges", "Package" };
@@ -114,13 +114,13 @@ namespace STL {
                 executionPlant = Convert.ToString(projWorkSheet.Cell(30, 3).Value ?? string.Empty);
 
                 for(int i = 16; i < 24; i++) {
-                    if(!string.IsNullOrEmpty(projWorkSheet.Cell(i, 6).Value?.ToString())) {
+                    if(!string.IsNullOrEmpty(projWorkSheet.Cell(i, 7).Value?.ToString())) {
                         deliveryDestinations.Add(new DeliveryDestination() {
-                            Name = projWorkSheet.Cell(i, 6).Value?.ToString(),
+                            Name = projWorkSheet.Cell(i, 7).Value?.ToString(),
                             PersonName = projWorkSheet.Cell(i, 12).Value?.ToString(),
                             Address = projWorkSheet.Cell(i, 11).Value?.ToString(),
                             WBS = projWorkSheet.Cell(i, 8).Value?.ToString(),
-                            ExecutionPlant = projWorkSheet.Cell(i, 7).Value?.ToString(),
+                            ExecutionPlant = projWorkSheet.Cell(i, 6).Value?.ToString(),
                             FOPO = projWorkSheet.Cell(i, 9).Value?.ToString(),
                             Incoterm = projWorkSheet.Cell(i, 10).Value?.ToString(),
                             IncotermLocation = projWorkSheet.Cell(i, 11).Value?.ToString(),
@@ -483,20 +483,20 @@ namespace STL {
                         var rowData = new List<string>();
                         var displayData = new List<string>();
                         foreach(var column in columnIndexes) {
-                            rowData.Add(row.Cell(column.Value).GetString());
+                            rowData.Add(row.Cell(column.Value).CachedValue.ToString());
                         }
                         if (rowData.Count > 0)
                         {
 
 
-                            if (rowData[10] == "BOM CLASSIFIED AS NON-FUNCTION" && !rowData[0].EndsWith("-L"))
-                            {
-                                rowData[0] = rowData[0] + "-L";
-                            }
-                           else if (baseIndex == 15 && rowData[12] == "BOM CLASSIFIED AS NON-FUNCTION" && !rowData[0].EndsWith("-L"))
-                            {
-                                rowData[0] = rowData[0] + "-L";
-                            }
+                           // if (rowData[10] == "BOM CLASSIFIED AS NON-FUNCTION" && !rowData[0].EndsWith("-L"))
+                           // {
+                           //     rowData[0] = rowData[0] + "-L";
+                           // }
+                           //else if (baseIndex == 15 && rowData[12] == "BOM CLASSIFIED AS NON-FUNCTION" && !rowData[0].EndsWith("-L"))
+                           // {
+                           //     rowData[0] = rowData[0] + "-L";
+                           // }
                         }
                         dtSource.Rows.Add(rowData.ToArray());
                         dtSource.Rows[dtSource.Rows.Count - 1]["Color"] = row.Cell(1).Style.Fill.BackgroundColor.ColorType == XLColorType.Theme ? "FFFFFF" : row.Cell(1).Style.Fill.BackgroundColor?.Color.Name;
@@ -951,7 +951,8 @@ namespace STL {
                         Rate = (RentalRates.FirstOrDefault(c => c.MatNo.Replace("-L", "").Equals(row.Cells["MatNo"].Value.ToString().Replace("-L", ""), StringComparison.OrdinalIgnoreCase))?.Rate ?? 0) * orderQty,
                         PackageId = packageId.ToString(),
                         EqmOwnership = GetEqmOwnership(rbtLeq.Checked ? string.Empty : row.Cells["Source"]?.Value?.ToString(), packageName),
-                        Region = GetComponentSourceRegion(rbtLeq.Checked ? string.Empty : row.Cells["Source"]?.Value?.ToString(), packageName)
+                        Region = GetComponentSourceRegion(rbtLeq.Checked ? string.Empty : row.Cells["Source"]?.Value?.ToString(), packageName),
+                        Materialhandlingtype = row.Cells["Material handling type"].Value.ToString()
                     });
                    var message=  config.lstWarningMessageSource.Where(c => c.MaterialNo.Contains(row.Cells["MatNo"].Value.ToString().Replace("-L", ""))).FirstOrDefault();
                     if (message !=null &&  !string.IsNullOrEmpty(message.Message)) 
@@ -1129,7 +1130,7 @@ namespace STL {
                             for(int i = 0; i < Convert.ToInt32(dt.Rows[e.RowIndex][e.ColumnIndex]); i++) {
                                 dtReport.Rows.Add();
                                 var mat = material;
-                                if(!string.IsNullOrEmpty(rental.Description) && rental.Description.ToUpper() == "BOM CLASSIFIED AS NON-FUNCTION" && !material.EndsWith("-L"))
+                                if(!string.IsNullOrEmpty(rental.Materialhandlingtype) && ( rental.Materialhandlingtype.ToUpper().Contains("NON-FUNCTION") || rental.Materialhandlingtype.ToUpper().Contains("NONFUNCTION")) && !material.EndsWith("-L"))
                                 {
                                     mat = material + "-L";
                                 }

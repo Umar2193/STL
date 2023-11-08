@@ -14,6 +14,7 @@
 
         public string Region { get; set; }
         public string PackageId { get; set; }
+        public string Materialhandlingtype  { get; set; }
     }
 
     public class DeliveryDestination {
